@@ -34,9 +34,9 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("username", username);
         contentValues.put("password", password);
         long result = MyDB.insert("users", null, contentValues);
-        if(result == -1) return false;
+        if(result == -1) return true;
         else
-            return true;
+            return false;
     }
 
     public Boolean checkusername(String username){

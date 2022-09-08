@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         username = (EditText) findViewById(R.id.EDusername);
         password = (EditText) findViewById(R.id.EDpassword);
-        repassword = (EditText)  findViewById(R.id.EDrepassword);
+        repassword = (EditText) findViewById(R.id.EDrepassword);
 
         signup = (Button) findViewById(R.id.Btnsignup);
         signin = (Button) findViewById(R.id.Btnsignin);
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                         Boolean checkuser = DB.checkusername(user);
                         if(checkuser == false){
                             Boolean insert = DB.insertData(user, pass);
-                            if(insert = false){
+                            if(insert == false){
                                 Toast.makeText(MainActivity.this, "Registered succesfully", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent (getApplicationContext(), HomeActivity.class);
                                 startActivity(intent);
