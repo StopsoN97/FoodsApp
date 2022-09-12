@@ -61,7 +61,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
     }
 
-    public SimpleCursorAdapter populateListViewFromDB(){
+    /*public SimpleCursorAdapter populateListViewFromDB(){
         String columns[]={DBHelper.KEY_ROWID,DBHelper.KEY_NAME, DBHelper.KEY_EMAIL};
         SQLiteDatabase MyDB = this.getWritableDatabase();
         Cursor cursor = MyDB.query(DBHelper.TABLE_NAME,columns, null,null,null,null,null);
@@ -74,5 +74,5 @@ public class DBHelper extends SQLiteOpenHelper {
             context, R.layout.single_item, cursor, fromFieldNames, toViewIDs
         );
         return fridgeAdapter;
-    };
+    };*/
 }
