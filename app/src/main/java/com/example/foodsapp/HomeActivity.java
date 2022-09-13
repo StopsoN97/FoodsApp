@@ -29,14 +29,16 @@ public class HomeActivity extends AppCompatActivity {
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
 
-                    switch (item.getItemId()){
 
-                        case R.id.nav_time:
-                            selectedFragment = new HomeFragment();
+                    if(item.getItemId() == R.id.nav_home)
+                        selectedFragment = new HomeFragment();
+                    else if(item.getItemId() == R.id.nav_time)
+                        selectedFragment = new TimeFragment();
+                    else if(item.getItemId() == R.id.nav_search)
+                        selectedFragment = new SearchFragment();
 
-                        /*case R.id.nav_:
-                            selectedFragment = new HomeFragment();*/
-                    }
+
+
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
 
                     return true;
