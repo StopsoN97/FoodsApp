@@ -48,4 +48,12 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/Btnsignup"/>
 
+    <Button
+        android:id="@+id/BtnFridge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Look Fridge"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/Btnsignin"/>
+
 </RelativeLayout>

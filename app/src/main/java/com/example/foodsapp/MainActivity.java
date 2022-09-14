@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText username, password, repassword;
-    Button signup, signin;
+    Button signup, signin, btnFridge;
     DBHelper DB;
 
     @Override
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         signup = (Button) findViewById(R.id.Btnsignup);
         signin = (Button) findViewById(R.id.Btnsignin);
+        btnFridge = (Button) findViewById(R.id.BtnFridge);
 
         DB = new DBHelper(this);
 
@@ -70,6 +71,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        btnFridge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), FridgeActivity.class);
+                startActivity(intent);
+            }});
 
     }
 }

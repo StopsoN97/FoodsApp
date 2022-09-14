@@ -12,25 +12,43 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    public static final String DB_NAME = "Login.db";
+    public static final String DB_TABLE_FOOD = "Foods"; //LV
 
-    public static final String DBNAME = "Login.db";
     Context context;
 
+    //columns
+    private static final String ID = "ID";
+    private static final String NAME = "NAME";
+
+    private static final String CREATE_TABLE_FOOD = "CREATE TABLE " +DB_TABLE_FOOD +" (" +
+            ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "+
+            NAME + " TEXT "+ ")";
+
     public DBHelper(@Nullable Context context) {
-        super(context, "Login.db", null, 1);
+        super(context, DB_NAME, null, 1);
         this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table users(username TEXT primary key, password TEXT)");
+        MyDB.execSQL(CREATE_TABLE_FOOD);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase MyDB, int i, int i1) {
-        MyDB.execSQL("drop Table if exists users");
+        MyDB.execSQL("DROP TABLE IF EXISTS users");
+        MyDB.execSQL("DROP TABLE IF EXISTS " + DB_TABLE_FOOD);
+
+
+        onCreate(MyDB); // LV
     }
+
+
+
+    //**************************** OTHERS FUNCTIONS *************************************************
 
     public Boolean insertData (String username, String password){
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -41,6 +59,17 @@ public class DBHelper extends SQLiteOpenHelper {
         if(result == -1) return true;
         else
             return false;
+    }
+
+    public Boolean insertFood(String name){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValue = new ContentValues();
+        contentValue.put(NAME,name);
+
+        long result = MyDB.insert(DB_TABLE_FOOD, null, contentValue);
+
+        return result != -1; // if result = -1 data dosent insert
+
     }
 
     public Boolean checkusername(String username){
